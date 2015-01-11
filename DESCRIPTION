@@ -1,8 +1,8 @@
 Package: AGD
 Type: Package
-Version: 0.31
+Version: 0.32
 Title: Analysis of Growth Data
-Date: 2014-12-20
+Date: 2015-01-11
 Author: Stef van Buuren <stef.vanbuuren@tno.nl>
 Maintainer: Stef van Buuren <stef.vanbuuren@tno.nl>
 Depends: R (>= 2.10.0)
@@ -14,7 +14,7 @@ LazyLoad: yes
 LazyData: yes
 URL: http://www.stefvanbuuren.nl,
         http://nihes.nl/courses/analysis-of-growth-data/
-Packaged: 2014-12-20 11:16:06 UTC; stefvanbuuren
+Packaged: 2015-01-10 23:02:33 UTC; stefvanbuuren
 NeedsCompilation: no
 Repository: CRAN
-Date/Publication: 2014-12-22 01:26:06
+Date/Publication: 2015-01-11 23:13:12
