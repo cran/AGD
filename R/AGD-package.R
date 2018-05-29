@@ -1,4 +1,10 @@
-
+#'@importFrom stats approx coef dnorm fitted lm pnorm qnorm qqnorm resid spline
+#'@importFrom grDevices gray
+#'@importFrom graphics  Axis abline axis box co.intervals grid lines mtext par plot plot.new plot.window points rect text
+#'@importFrom utils packageDescription
+#'@importFrom gamlss.dist pBCCG pBCPE pBCT qBCCG qBCPE qBCT
+#'@importFrom gamlss gamlss gamlss.control is.gamlss predictAll
+NULL
 
 #'Growth of Dutch boys
 #'
@@ -181,12 +187,13 @@ NULL
 #'\item{who.hgt}{Length (cm, 0-2 Yrs) or height (cm, 2-19 years)} 
 #'\item{who.wgt}{Weight (kg) for age (0-10 years)}
 #'\item{who.bmi}{BMI (kg/m^2) for age (0-19 years)}
+#'\item{who.hdc}{Head circumference (cm) for age (0-5 years)}
 #'\item{who.wfh}{Weight (kg) for height (65-120 cm)}
 #'\item{who.wfl}{Weight (kg) for length (45-110 cm)}
 #'}
 #'
 #'@name References WHO
-#'@aliases who.wgt who.hgt who.bmi who.wfh who.wfl
+#'@aliases who.wgt who.hgt who.bmi who.wfh who.wfl who.hdc
 #'@docType data
 #'@format A data frame with seven variables: 
 #'\describe{

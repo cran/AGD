@@ -45,12 +45,11 @@
 #'@param dec A scalar value indicating the number of decimals used to round the
 #'value.
 #'@param sex.fallback The level of the \code{sex} field used when no match is
-#'found.  The default is \code{"M"} for males. Specify \code{sex.fallback="NA"}
-#'if unmatched entries should receive a \code{NA} value.
+#'found.  The default \code{sex.fallback=NA} specifies that 
+#'unmatched entries should receive a \code{NA} value.
 #'@param sub.fallback The level of the \code{sub} field used when no match is
-#'found.  The default is \code{"N"} for normal. Specify
-#'\code{sub.fallback="NA"} if unmatched entries should receive a \code{NA}
-#'value.
+#'found.  The default \code{sub.fallback=NA} specifies that 
+#'unmatched entries should receive a \code{NA} value.
 #'@return For \code{y2z()}: A vector with \code{length(y)} elements containing
 #'the standard deviation score.  For \code{z2y()}: A vector with
 #'\code{length(z)} elements containing quantiles.
@@ -126,8 +125,7 @@
 #'dimnames(w) <- list(days, sds)
 #'w
 #'
-#'
-
+#'@export
 z2y <- function(z   = c(-2, 0, 2), 
 				x   = 1, 
 				sex = "M", 
@@ -135,8 +133,8 @@ z2y <- function(z   = c(-2, 0, 2),
 				ref = get("nl4.hgt"),
 				dist = "LMS",
 				dec  = 3,
-				sex.fallback = "M",
-				sub.fallback = "N")
+				sex.fallback = NA,
+				sub.fallback = NA)
 {
 	
 	z2y.grp <- function(z, x, ref, dist = "LMS") {
@@ -184,8 +182,8 @@ z2y <- function(z   = c(-2, 0, 2),
 	if (!is.data.frame(ref)) stop("'ref' should be a data frame.")
 	n <- length(z)
 	if (n < 1)         stop("'z' must have 1 or more values")
-	if(!is.vector(z))  stop("'z' must be a numeric vector")
-	if(!is.numeric(z)) stop("'z' must be a numeric vector")
+	if(!is.vector(z))  return(as.numeric(rep(NA, n)))
+	if(!is.numeric(z)) return(as.numeric(rep(NA, n)))
 	
 	x   <- rep(x,   length.out=length(z))
 	sex <- rep(sex, length.out=length(z))
@@ -200,12 +198,14 @@ z2y <- function(z   = c(-2, 0, 2),
 	idx <- is.na(match(sub, lev.sub))
 	if (any(idx)) {
 		sub[idx] <- sub.fallback
-		warning("Entries (n=",sum(idx),") replaced by '",sub.fallback,"'",sep="")
+		if (!is.na(sub.fallback))
+			warning("Entries (n=",sum(idx),") replaced by '",sub.fallback,"'",sep="")
 	}
 	idx <- is.na(match(sex, lev.sex))
 	if (any(idx)) {
 		sex[idx] <- sex.fallback
-		warning("Entries (n=",sum(idx),") replaced by '",sex.fallback,"'",sep="")
+		if (!is.na(sex.fallback))
+			warning("Entries (n=",sum(idx),") replaced by '",sex.fallback,"'",sep="")
 	}
 	
 	refs <- with(ref,split(ref, f=list(sub, sex)))
@@ -271,12 +271,11 @@ z2y <- function(z   = c(-2, 0, 2),
 #'@param dec A scalar value indicating the number of decimals used to round the
 #'value.
 #'@param sex.fallback The level of the \code{sex} field used when no match is
-#'found.  The default is \code{"M"} for males. Specify \code{sex.fallback="NA"}
-#'if unmatched entries should receive a \code{NA} value.
+#'found.  The default \code{sex.fallback=NA} specifies that 
+#'unmatched entries should receive a \code{NA} value.
 #'@param sub.fallback The level of the \code{sub} field used when no match is
-#'found.  The default is \code{"N"} for normal. Specify
-#'\code{sub.fallback="NA"} if unmatched entries should receive a \code{NA}
-#'value.
+#'found.  The default \code{sub.fallback=NA} specifies that 
+#'unmatched entries should receive a \code{NA} value.
 #'@param tail.adjust Logical. If \code{TRUE} then the WHO method for 
 #'tail adjustment is applied. The default is \code{FALSE}.
 #'@return For \code{y2z()}: A vector with \code{length(y)} elements containing
@@ -393,7 +392,7 @@ z2y <- function(z   = c(-2, 0, 2),
 #'dimnames(w) <- list(days, sds)
 #'w
 #'
-#'
+#'@export
 y2z <- function(y   = c(75, 80, 85), 
 				x   = 1, 
 				sex = "M", 
@@ -401,8 +400,8 @@ y2z <- function(y   = c(75, 80, 85),
 				ref = get("nl4.hgt"),
 				dist = "LMS",
 				dec  = 3,
-				sex.fallback = "M",
-				sub.fallback = "N",
+				sex.fallback = NA,
+				sub.fallback = NA,
 				tail.adjust = FALSE)
 {
 	
@@ -460,8 +459,8 @@ y2z <- function(y   = c(75, 80, 85),
 	if (!is.data.frame(ref)) stop("'ref' should be a data frame.")
 	n <- length(y)
 	if (n < 1)         stop("'y' must have 1 or more values")
-	if(!is.vector(y))  stop("'y' must be a numeric vector")
-	if(!is.numeric(y)) stop("'y' must be a numeric vector")
+	if(!is.vector(y))  return(as.numeric(rep(NA, n)))
+	if(!is.numeric(y)) return(as.numeric(rep(NA, n)))
 	
 	x   <- rep(x,   length.out=length(y))
 	sex <- rep(sex, length.out=length(y))
@@ -476,12 +475,14 @@ y2z <- function(y   = c(75, 80, 85),
 	idx <- is.na(match(sub, lev.sub))
 	if (any(idx)) {
 		sub[idx] <- sub.fallback
-		warning("Entries (n=",sum(idx),") replaced by '",sub.fallback,"'",sep="")
+		if (!is.na(sub.fallback))
+			warning("Entries (n=",sum(idx),") replaced by '",sub.fallback,"'",sep="")
 	}
 	idx <- is.na(match(sex, lev.sex))
 	if (any(idx)) {
 		sex[idx] <- sex.fallback
-		warning("Entries (n=",sum(idx),") replaced by '",sex.fallback,"'",sep="")
+		if (!is.na(sex.fallback))
+			warning("Entries (n=",sum(idx),") replaced by '",sex.fallback,"'",sep="")
 	}
 	
 	refs <- with(ref,split(ref, f=list(sub, sex)), drop = TRUE)
