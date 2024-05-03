@@ -4,9 +4,21 @@
 \alias{wp.twin}
 \title{Superposes two worm plots}
 \usage{
-wp.twin(obj1, obj2 = NULL, xvar = NULL, xvar.column = 2, n.inter = 16,
-  show.given = FALSE, ylim.worm = 0.5, line = FALSE, cex = 1,
-  col1 = "black", col2 = "orange", warnings = FALSE, ...)
+wp.twin(
+  obj1,
+  obj2 = NULL,
+  xvar = NULL,
+  xvar.column = 2,
+  n.inter = 16,
+  show.given = FALSE,
+  ylim.worm = 0.5,
+  line = FALSE,
+  cex = 1,
+  col1 = "black",
+  col2 = "orange",
+  warnings = FALSE,
+  ...
+)
 }
 \arguments{
 \item{obj1}{a GAMLSS fitted object}
@@ -83,19 +95,19 @@ adequately the data (called "model violation")
 }
 \examples{
 
+\dontrun{
 library(gamlss)
 data(abdom)
 a <- gamlss(y~cs(x,df=1),sigma.fo=~cs(x,0),family=LO,data=abdom)
 b <- gamlss(y~cs(x,df=3),sigma.fo=~cs(x,1),family=LO,data=abdom)
 coeff1 <- wp.twin(a,b,line=TRUE)
-coeff1
-rm(a,b,coeff1)
+}
 }
 \references{
 Stasinopoulos D. M. Rigby R.A. (2007) Generalized additive models
 for location scale and shape (GAMLSS) in R. \emph{Journal of Statistical
 Software}, Vol. \bold{23}, Issue 7, Dec 2007,
-\url{http://www.jstatsoft.org/v23/i07}.
+\url{https://www.jstatsoft.org/v23/i07}.
 
 van Buuren and Fredriks M. (2001) Worm plot: simple diagnostic device for
 modelling growth reference curves.  \emph{Statistics in Medicine}, \bold{20},
@@ -103,9 +115,6 @@ modelling growth reference curves.  \emph{Statistics in Medicine}, \bold{20},
 
 van Buuren and Fredriks M. (2007) Worm plot to diagnose fit in quantile
 regression.  \emph{Statistical Modelling}, \bold{7}, 4, 363--376.
-}
-\seealso{
-\code{\link{wp}}
 }
 \author{
 Stef van Buuren, using R code of Mikis Stasinopoulos and Bob Rigby

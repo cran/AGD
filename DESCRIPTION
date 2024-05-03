@@ -1,9 +1,9 @@
 Package: AGD
 Type: Package
-Version: 0.39
+Version: 0.45.0
 Title: Analysis of Growth Data
-Date: 2018-05-30
-Author: Stef van Buuren <stef.vanbuuren@tno.nl>
+Date: 2024-05-03
+Authors@R: person("Stef", "van Buuren", role = c("aut", "cre"), email = "stef.vanbuuren@tno.nl")
 Maintainer: Stef van Buuren <stef.vanbuuren@tno.nl>
 Depends: R (>= 2.10.0)
 Imports: gamlss, gamlss.dist
@@ -15,10 +15,12 @@ Description: Tools for the analysis of growth data: to extract an
 License: GPL-2 | GPL-3
 LazyLoad: yes
 LazyData: yes
-URL: https://github.com/stefvanbuuren/AGD
+URL: https://stefvanbuuren.name/AGD/
 BugReports: https://github.com/stefvanbuuren/AGD/issues
-RoxygenNote: 6.0.1
+Encoding: UTF-8
+RoxygenNote: 7.3.1
 NeedsCompilation: no
-Packaged: 2018-05-29 16:50:32 UTC; buurensv
+Packaged: 2024-05-03 14:42:18 UTC; buurensv
+Author: Stef van Buuren [aut, cre]
 Repository: CRAN
-Date/Publication: 2018-05-29 17:18:28 UTC
+Date/Publication: 2024-05-03 15:00:05 UTC
